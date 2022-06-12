@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { editExperience, getCurrentProfile } from "../../actions/profile";
 // import Moment from "react-moment";
@@ -7,7 +7,7 @@ import moment from "moment";
 import Alert from "../layout/Alert";
 
 const EditExperience = () => {
-  // const { id } = useParams();
+  const navigate = useNavigate();
 
   const loc = useLocation();
   const { expId } = loc.state;
@@ -44,7 +44,7 @@ const EditExperience = () => {
           ? ""
           : moment(experience.from).format("YYYY-MM-DD"),
       to:
-        loading || !experience
+        loading || !experience || !experience.to
           ? ""
           : moment(experience.to).format("YYYY-MM-DD"),
       current: loading || !experience ? "" : experience.current,
@@ -59,7 +59,7 @@ const EditExperience = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(editExperience(formData, expId));
+    dispatch(editExperience(formData, expId, navigate));
   };
 
   return (

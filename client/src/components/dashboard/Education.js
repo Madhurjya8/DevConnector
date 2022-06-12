@@ -1,8 +1,8 @@
 import React from "react";
 import Moment from "react-moment";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { deleteEducation } from "../../actions/profile";
-import { editEducation } from "../../actions/profile";
 
 const Education = (props) => {
   const dispatch = useDispatch();
@@ -25,12 +25,9 @@ const Education = (props) => {
         >
           <i className="fas fa-trash"></i>
         </button>
-        <button
-          onClick={() => dispatch(editEducation(edu._id))}
-          className="btn"
-        >
+        <Link to={"/edit-education"} state={{ eduId: edu._id }} className="btn">
           <i className="fas fa-edit"></i>
-        </button>
+        </Link>
       </td>
     </tr>
   ));

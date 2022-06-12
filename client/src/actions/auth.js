@@ -86,8 +86,9 @@ export const login =
         payload: res.data,
       });
 
-      navigate("/dashboard");
       dispatch(loadUser());
+
+      navigate("/dashboard");
     } catch (err) {
       const errors = err.response.data.errors;
       if (errors) {
