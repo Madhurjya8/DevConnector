@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 const ProfileItem = (props) => {
   const { user, status, company, location, skills } = props.profile;
   return (

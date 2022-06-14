@@ -26,11 +26,7 @@ const Experience = (props) => {
           <i className="fas fa-trash"></i>
         </button>
 
-        <Link
-          to={"/edit-experience"}
-          state={{ expId: exp._id }}
-          className="btn"
-        >
+        <Link to={`/edit-experience/${exp._id}`} className="btn">
           <i className="fas fa-edit"></i>
         </Link>
       </td>

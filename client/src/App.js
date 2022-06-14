@@ -15,6 +15,8 @@ import EditEducation from "./components/profile-forms/EditEducation";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
 import PrivateRoute from "./components/routing/PrivateRoute";
+import Posts from "./components/posts/Posts";
+import Post from "./components/post/Post";
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
@@ -76,7 +78,7 @@ const App = () => {
             }
           />
           <Route
-            path="edit-experience"
+            path="edit-experience/:expId"
             element={
               <PrivateRoute>
                 <EditExperience />
@@ -92,10 +94,26 @@ const App = () => {
             }
           />
           <Route
-            path="edit-education"
+            path="edit-education/:eduId"
             element={
               <PrivateRoute>
                 <EditEducation />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/posts"
+            element={
+              <PrivateRoute>
+                <Posts />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/posts/:postId"
+            element={
+              <PrivateRoute>
+                <Post />
               </PrivateRoute>
             }
           />

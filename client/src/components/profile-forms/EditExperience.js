@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { editExperience, getCurrentProfile } from "../../actions/profile";
 // import Moment from "react-moment";
@@ -9,8 +9,10 @@ import Alert from "../layout/Alert";
 const EditExperience = () => {
   const navigate = useNavigate();
 
-  const loc = useLocation();
-  const { expId } = loc.state;
+  const { expId } = useParams();
+
+  // const loc = useLocation();
+  // const { expId } = loc.state;
 
   const profileState = useSelector((state) => state.profile);
   const dispatch = useDispatch();

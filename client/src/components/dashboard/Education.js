@@ -25,7 +25,11 @@ const Education = (props) => {
         >
           <i className="fas fa-trash"></i>
         </button>
-        <Link to={"/edit-education"} state={{ eduId: edu._id }} className="btn">
+        <Link
+          to={`/edit-education/${edu._id}`}
+          // state={{ eduId: edu._id }}
+          className="btn"
+        >
           <i className="fas fa-edit"></i>
         </Link>
       </td>

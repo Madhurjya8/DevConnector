@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { editEducation, getCurrentProfile } from "../../actions/profile";
 // import Moment from "react-moment";
@@ -8,9 +8,10 @@ import Alert from "../layout/Alert";
 
 const EditEducation = () => {
   const navigate = useNavigate();
+  const { eduId } = useParams();
 
-  const loc = useLocation();
-  const { eduId } = loc.state;
+  // const loc = useLocation();
+  // const { eduId } = loc.state;
 
   const profileState = useSelector((state) => state.profile);
   const dispatch = useDispatch();

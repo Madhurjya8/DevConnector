@@ -15,7 +15,7 @@ const initialState = {
   error: {},
 };
 
-function profileReducer(state = initialState, action) {
+const profileReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -38,6 +38,7 @@ function profileReducer(state = initialState, action) {
         ...state,
         error: payload,
         loading: false,
+        profile: null,
       };
 
     case CLEAR_PROFILE:
@@ -45,7 +46,7 @@ function profileReducer(state = initialState, action) {
         ...state,
         profile: null,
         repos: [],
-        loading: false,
+        loading: true,
       };
     case GET_REPOS:
       return {
@@ -56,6 +57,6 @@ function profileReducer(state = initialState, action) {
     default:
       return state;
   }
-}
+};
 
 export default profileReducer;

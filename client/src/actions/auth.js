@@ -52,7 +52,7 @@ export const register =
         payload: res.data,
       });
 
-      dispatch(loadUser());
+      // dispatch(loadUser());
 
       navigate("/dashboard");
     } catch (err) {
@@ -86,7 +86,7 @@ export const login =
         payload: res.data,
       });
 
-      dispatch(loadUser());
+      // dispatch(loadUser());
 
       navigate("/dashboard");
     } catch (err) {
