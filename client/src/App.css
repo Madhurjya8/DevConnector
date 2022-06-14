@@ -530,6 +530,50 @@ img {
   font-size: 0.8rem;
   margin-bottom: 0.5rem;
 }
+/* Comment-Box Styles */
+.comments {
+  margin: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* flex-shrink: 2; */
+}
+.comment {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 4fr;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 1rem;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  /* margin: 3rem; */
+}
+
+.comment .photoname {
+  /* padding: 3rem; */
+}
+.comment > div:first-child {
+  text-align: center;
+}
+.comment img {
+  width: 100px;
+}
+.comment .comment-count {
+  background: #f4f4f4;
+  color: #343a40;
+  padding: 0.1rem 0.2rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+.comment .comment-date {
+  color: #aaa;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  /* float: right; */
+}
+/* Comment-Box Styles */
 @media (max-width: 700px) {
   .hide-sm {
     display: none;
@@ -592,6 +636,15 @@ img {
   }
   .post a,
   .post button {
+    padding: 0.3rem 0.4rem;
+  }
+
+  .comment {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+  }
+  .comment a,
+  .comment button {
     padding: 0.3rem 0.4rem;
   }
 }

@@ -21,7 +21,7 @@ const CommentForm = (props) => {
         <textarea
           ols="30"
           rows="5"
-          placeholder="Create a post"
+          placeholder="Comment the post"
           onChange={(e) => setText(e.target.value)}
           value={text}
         ></textarea>

@@ -9,8 +9,8 @@ const CommentItem = (props) => {
   const authState = useSelector((state) => state.auth);
   const { _id, text, name, avatar, user, date } = props.comment;
   return (
-    <div className="post bg-white p-1 my-1">
-      <div>
+    <div className="comment bg-white p-1 my-1">
+      <div className="photoname">
         <Link to={`/profile/${user}`}>
           <img className="round-img" src={avatar} alt="" />
           <h4>{name}</h4>
@@ -18,7 +18,7 @@ const CommentItem = (props) => {
       </div>
       <div>
         <p className="my-1">{text}</p>
-        <p className="post-date">
+        <p className="comment-date">
           Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
         </p>
         {!authState.loading && user === authState.user._id && (
