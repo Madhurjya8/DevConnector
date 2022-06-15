@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import Spinner from "../layout/Spinner";
 import Alert from "../layout/Alert";
-import PostItem from "../posts/PostItem";
+import PostItem from "./PostItem";
 import CommentForm from "./CommentForm";
 import CommentItem from "./CommentItem";
 import { getPost } from "../../actions/post";
@@ -26,7 +26,7 @@ const Post = (props) => {
         Back To Posts
       </Link>
 
-      <PostItem post={post} showActions={false} />
+      <PostItem post={post} />
       <CommentForm postId={post._id} />
       <div className="comments">
         {post.comments.map((comment) => (

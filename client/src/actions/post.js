@@ -123,6 +123,31 @@ export const getPost = (postId) => async (dispatch) => {
   }
 };
 
+// Update post
+export const editPost = (formData, postId) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    const res = await axios.put(`/api/posts/${postId}`, formData, config);
+
+    dispatch({
+      type: GET_POST,
+      payload: res.data,
+    });
+
+    dispatch(setAlert("Post updated", "success"));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.data.msg, status: err.response.status },
+    });
+  }
+};
+
 // Add Comment
 export const addComment = (postId, formData) => async (dispatch) => {
   const config = {
