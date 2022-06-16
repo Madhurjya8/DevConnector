@@ -124,7 +124,7 @@ export const getPost = (postId) => async (dispatch) => {
   }
 };
 
-// Update post
+// Edit post
 export const editPost = (formData, postId) => async (dispatch) => {
   const config = {
     headers: {
@@ -198,3 +198,35 @@ export const deleteComment = (postId, commentId) => async (dispatch) => {
     });
   }
 };
+
+// Edit comment
+export const editComment =
+  (formData, postId, commentId) => async (dispatch) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const res = await axios.put(
+        `/api/posts/comment/${postId}/${commentId}`,
+        formData,
+        config
+      );
+
+      // const resPosts = await axios.get("/api/posts");
+
+      dispatch({
+        type: GET_POST,
+        payload: res.data,
+      });
+
+      dispatch(setAlert("Comment updated", "success"));
+    } catch (err) {
+      dispatch({
+        type: POST_ERROR,
+        payload: { msg: err.response.data.msg, status: err.response.status },
+      });
+    }
+  };

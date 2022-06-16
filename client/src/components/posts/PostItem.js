@@ -16,7 +16,6 @@ const PostItem = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
     setEditMode(false);
-    console.log(postText);
     dispatch(editPost({ text: postText }, _id));
   };
 

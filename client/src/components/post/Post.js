@@ -30,7 +30,12 @@ const Post = (props) => {
       <CommentForm postId={post._id} />
       <div className="comments">
         {post.comments.map((comment) => (
-          <CommentItem key={comment._id} comment={comment} postId={post._id} />
+          <CommentItem
+            key={comment._id}
+            comment={comment}
+            postId={post._id}
+            loading={loading}
+          />
         ))}
       </div>
     </div>
