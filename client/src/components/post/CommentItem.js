@@ -8,6 +8,7 @@ const CommentItem = (props) => {
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
   const { _id, text, name, avatar, user, date } = props.comment;
+
   return (
     <div className="comment bg-white p-1 my-1">
       <div className="photoname">

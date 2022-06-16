@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
+import Spinner from "../layout/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { addLike, removeLike, deletePost, editPost } from "../../actions/post";
 
@@ -19,7 +20,9 @@ const PostItem = (props) => {
     dispatch(editPost({ text: postText }, _id));
   };
 
-  return (
+  return props.loading ? (
+    <Spinner />
+  ) : (
     <div className="post bg-white my-1 p-1">
       <div>
         <Link to={`/profile/${user}`}>

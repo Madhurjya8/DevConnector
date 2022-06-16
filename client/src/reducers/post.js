@@ -5,6 +5,7 @@ import {
   DELETE_POST,
   ADD_POST,
   GET_POST,
+  EDIT_POST,
   ADD_COMMENT,
   REMOVE_COMMENT,
 } from "../actions/types";
@@ -36,6 +37,14 @@ const postReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: [payload, ...state.posts],
+        loading: false,
+      };
+    case EDIT_POST:
+      return {
+        ...state,
+        posts: state.posts.map((post) =>
+          post._id === payload.postId ? payload.post : post
+        ),
         loading: false,
       };
     case DELETE_POST:

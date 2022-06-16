@@ -7,6 +7,7 @@ import {
   DELETE_POST,
   ADD_POST,
   GET_POST,
+  EDIT_POST,
   ADD_COMMENT,
   REMOVE_COMMENT,
 } from "./types";
@@ -134,9 +135,11 @@ export const editPost = (formData, postId) => async (dispatch) => {
   try {
     const res = await axios.put(`/api/posts/${postId}`, formData, config);
 
+    // const resPosts = await axios.get("/api/posts");
+
     dispatch({
-      type: GET_POST,
-      payload: res.data,
+      type: EDIT_POST,
+      payload: { postId, post: res.data },
     });
 
     dispatch(setAlert("Post updated", "success"));
@@ -180,7 +183,7 @@ export const addComment = (postId, formData) => async (dispatch) => {
 // Delete Comment
 export const deleteComment = (postId, commentId) => async (dispatch) => {
   try {
-    const res = await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
+    await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
 
     dispatch({
       type: REMOVE_COMMENT,
