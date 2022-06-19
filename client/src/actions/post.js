@@ -180,6 +180,36 @@ export const addComment = (postId, formData) => async (dispatch) => {
   }
 };
 
+// Reply Comment
+export const replyComment =
+  (postId, parentId, formData) => async (dispatch) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const res = await axios.post(
+        `/api/posts/comment/${postId}/${parentId}`,
+        formData,
+        config
+      );
+
+      dispatch({
+        type: ADD_COMMENT,
+        payload: res.data,
+      });
+
+      dispatch(setAlert("Comment Added", "success"));
+    } catch (err) {
+      dispatch({
+        type: POST_ERROR,
+        payload: { msg: err.response.data.msg, status: err.response.status },
+      });
+    }
+  };
+
 // Delete Comment
 export const deleteComment = (postId, commentId) => async (dispatch) => {
   try {

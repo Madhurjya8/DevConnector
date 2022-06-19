@@ -13,6 +13,15 @@ const Post = (props) => {
   const { post, loading } = useSelector((state) => state.post);
   const { postId } = useParams();
 
+  const rootComments = post?.comments.filter(
+    (comment) => comment.parentId === null
+  );
+
+  const getReplies = (commentId) =>
+    post.comments
+      .filter((comment) => comment.parentId === commentId)
+      .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
   useEffect(() => {
     dispatch(getPost(postId));
   }, [dispatch, postId]);
@@ -29,12 +38,14 @@ const Post = (props) => {
       <PostItem post={post} />
       <CommentForm postId={post._id} />
       <div className="comments">
-        {post.comments.map((comment) => (
+        {rootComments.map((rootComment) => (
           <CommentItem
-            key={comment._id}
-            comment={comment}
+            key={rootComment._id}
+            comment={rootComment}
             postId={post._id}
             loading={loading}
+            replies={getReplies(rootComment._id)}
+            isReply={false}
           />
         ))}
       </div>

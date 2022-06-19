@@ -545,6 +545,12 @@ img {
   /* align-items: center; */
   /* flex-shrink: 2; */
 }
+.root-comment {
+  border: #ccc 1px solid;
+  padding: 0;
+  margin: 1rem;
+}
+
 .comment {
   display: -ms-grid;
   display: grid;
@@ -555,6 +561,17 @@ img {
   -ms-flex-align: center;
   align-items: center;
   /* margin: 3rem; */
+}
+.comments .replies {
+  margin: 0 0 0 4rem;
+}
+
+.reply-p {
+  display: inline;
+}
+
+.reply:last-child {
+  margin-bottom: 1rem;
 }
 
 .comment .photoname {
