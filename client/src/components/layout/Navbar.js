@@ -23,7 +23,7 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <Link onClick={() => dispatch(logout())} to="#!">
+        <Link onClick={() => dispatch(logout())} to="/">
           <i className="fas fa-sign-out-alt"></i>{" "}
           <span className="hide-sm">Logout</span>
         </Link>
@@ -49,7 +49,7 @@ const Navbar = () => {
     <nav className="navbar bg-dark">
       <h1>
         <Link to="/">
-          <i className="fas fa-code"></i> DevConnector
+          <i className="fas fa-code"></i> DevLink
         </Link>
       </h1>
       {!isLoading && (

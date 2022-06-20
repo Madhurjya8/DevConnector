@@ -39,8 +39,8 @@ const Profile = (props) => {
           <div className="profile-grid my-1">
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
-            <div class="profile-exp bg-white p-2">
-              <h2 class="text-primary">Experience</h2>
+            <div className="profile-exp bg-white p-2">
+              <h2 className="text-primary">Experience</h2>
               {profile.experience.length > 0 ? (
                 <React.Fragment>
                   {profile.experience.map((experience) => (
@@ -55,8 +55,8 @@ const Profile = (props) => {
               )}
             </div>
 
-            <div class="profile-edu bg-white p-2">
-              <h2 class="text-primary">Education</h2>
+            <div className="profile-edu bg-white p-2">
+              <h2 className="text-primary">Education</h2>
               {profile.education.length > 0 ? (
                 <React.Fragment>
                   {profile.education.map((education) => (

@@ -38,7 +38,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Navbar />
-        {/* <Alert /> */}
+
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="register" element={<Register />} />
