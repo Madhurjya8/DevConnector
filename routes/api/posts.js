@@ -256,38 +256,6 @@ router.post(
   }
 );
 
-// @route   DELETE api/posts/comment/:id/:comment_id
-// @desc    Delete comment
-// @access  Private
-router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
-  try {
-    const post = await Post.findById(req.params.id);
-
-    // Pull out comment
-    const commentIndex = post.comments.findIndex(
-      (comment) => comment.id === req.params.comment_id
-    );
-
-    // Make sure comment exists
-    if (commentIndex === -1)
-      return res.status(404).json({ msg: "Comment does not exist" });
-
-    const comment = post.comments[commentIndex];
-    // Check user
-    if (comment.user.toString() !== req.user.id)
-      return res.status(401).json({ msg: "User not authorized" });
-
-    post.comments.splice(commentIndex, 1);
-
-    await post.save();
-
-    res.json(post.comments);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
-  }
-});
-
 // @route   UPDATE api/posts/comment/:id/:comment_id
 // @desc    Update  comment
 // @access  Private
@@ -314,6 +282,7 @@ router.put("/comment/:id/:comment_id", auth, async (req, res) => {
     const updatedComment = {
       // ...comment,
       _id: req.params.comment_id,
+      parentId: comment.parentId,
       text: req.body.text,
       name: user.name,
       avatar: user.avatar,

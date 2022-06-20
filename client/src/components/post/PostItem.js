@@ -5,7 +5,7 @@ import Moment from "react-moment";
 const PostItem = (props) => {
   const { text, name, avatar, user, date } = props.post;
   return (
-    <div className="post bg-white my-1 p-1">
+    <div className="post bg-light my-1 p-1">
       <div>
         <Link to={`/profile/${user}`}>
           <img className="round-img" src={avatar} alt="" />

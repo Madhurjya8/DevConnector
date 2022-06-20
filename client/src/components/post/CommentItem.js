@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Spinner from "../layout/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import Moment from "react-moment";
-import { deleteComment, editComment, replyComment } from "../../actions/post";
+import { editComment, replyComment } from "../../actions/post";
 
 const CommentItem = (props) => {
   const dispatch = useDispatch();
@@ -31,6 +31,7 @@ const CommentItem = (props) => {
         { text: replyText }
       )
     );
+    setReplyText("");
   };
 
   return props.loading ? (
@@ -38,7 +39,7 @@ const CommentItem = (props) => {
   ) : (
     <React.Fragment>
       <div
-        className={`comment bg-white p-1 ${!props.isReply ? "my-1" : "reply"}`}
+        className={`comment bg-light p-1 ${!props.isReply ? "my-1" : "reply"}`}
       >
         <div className="photoname">
           <Link to={`/profile/${user}`}>
@@ -54,17 +55,9 @@ const CommentItem = (props) => {
                 Posted on <Moment format="YYYY/MM/DD">{date}</Moment>
               </p>
               {!authState.loading && user === authState.user._id && (
-                <React.Fragment>
-                  <button
-                    onClick={(e) => dispatch(deleteComment(props.postId, _id))}
-                    className="btn btn-delete"
-                  >
-                    <i className="fas fa-trash"></i>
-                  </button>
-                  <button onClick={() => setEditMode(true)} className="btn">
-                    <i className="fas fa-edit"></i>
-                  </button>
-                </React.Fragment>
+                <button onClick={() => setEditMode(true)} className="btn">
+                  <i className="fas fa-edit"></i>
+                </button>
               )}
               {!replyMode && (
                 <button onClick={() => setReplyMode(true)} className="btn">

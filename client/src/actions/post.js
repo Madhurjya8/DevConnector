@@ -9,7 +9,7 @@ import {
   GET_POST,
   EDIT_POST,
   ADD_COMMENT,
-  REMOVE_COMMENT,
+  
 } from "./types";
 
 // Get posts
@@ -210,24 +210,6 @@ export const replyComment =
     }
   };
 
-// Delete Comment
-export const deleteComment = (postId, commentId) => async (dispatch) => {
-  try {
-    await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
-
-    dispatch({
-      type: REMOVE_COMMENT,
-      payload: commentId,
-    });
-
-    dispatch(setAlert("Comment Removed", "success"));
-  } catch (err) {
-    dispatch({
-      type: POST_ERROR,
-      payload: { msg: err.response.data.msg, status: err.response.status },
-    });
-  }
-};
 
 // Edit comment
 export const editComment =
