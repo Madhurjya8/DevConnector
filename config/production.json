@@ -1,0 +1,8 @@
+{
+  "mongoURI": "mongodb+srv://madhurjya:ph8YRuHtxv2qbIkr@cluster0.fefhws6.mongodb.net/test?retryWrites=true&w=majority",
+
+  "jwtSecret": "confidentialInformation",
+
+  "githubClientId": "87d79b409d35c2dcdfa8",
+  "githubSecret": "5bd92c9ad542525af68060ccbadc92ae84ea0909"
+}
