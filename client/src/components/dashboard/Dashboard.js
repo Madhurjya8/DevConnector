@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentProfile, deleteAccount } from "../../actions/profile";
@@ -12,11 +12,7 @@ import Alert from "../layout/Alert";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const {
-    isAuthenticated,
-    user,
-    loading: userLoading,
-  } = useSelector((state) => state.auth);
+  const { user, loading: userLoading } = useSelector((state) => state.auth);
   const { profile, loading: profileLoading } = useSelector(
     (state) => state.profile
   );
@@ -26,7 +22,7 @@ const Dashboard = () => {
       dispatch(loadUser());
       dispatch(getCurrentProfile());
     });
-  }, [dispatch, getCurrentProfile]);
+  }, [dispatch]);
 
   return (
     <section className="container">

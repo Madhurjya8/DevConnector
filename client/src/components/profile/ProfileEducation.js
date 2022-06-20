@@ -2,7 +2,7 @@ import React from "react";
 import Moment from "react-moment";
 
 const ProfileEducation = (props) => {
-  const { school, degree, fieldofstudy, from, current, to, description } =
+  const { school, degree, fieldofstudy, from, to, description } =
     props.education;
 
   return (

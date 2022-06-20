@@ -2,8 +2,7 @@ import React from "react";
 import Moment from "react-moment";
 
 const ProfileExperience = (props) => {
-  const { company, title, location, from, current, to, description } =
-    props.experience;
+  const { company, title, from, to, description } = props.experience;
 
   return (
     <div>
